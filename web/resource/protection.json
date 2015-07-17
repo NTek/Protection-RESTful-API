@@ -1,0 +1,248 @@
+{
+    "basePath": "http://ntek.info/api/protection",
+    "swaggerVersion": "1.2",
+    "resourcePath": "/protection",
+    "apis": [
+        {
+            "path": "/add",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Add Protection",
+                    "nickname": "add",
+                    "type": "void",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "type": "string",
+                            "required": true,
+                            "description": "Application Name."
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "enabled",
+                            "type": "boolean",
+                            "required": true,
+                            "description": "Is this Application Enabled?"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successfull Added."
+                        },
+                        {
+                            "code": 405,
+                            "message": "Invalid Input."
+                        }
+                    ],
+                    "notes": "",
+                    "authorizations": {
+
+                    }
+                }
+            ]
+        },
+        {
+            "path": "/get/{id}",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Get Protected Application by ID",
+                    "nickname": "get",
+                    "type": "array",
+                    "items": {
+                        "$ref": "ProtectionItem"
+                    },
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "ID of Protected Application."
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successfull Listed."
+                        },
+                        {
+                            "code": 400,
+                            "message": "Invalid ID supplied."
+                        },
+                        {
+                            "code": 404,
+                            "message": "Item not found."
+                        },
+                        {
+                            "code": 405,
+                            "message": "Invalid Input."
+                        }
+                    ],
+                    "notes": "Returns Protected Application based on ID field.",
+                    "authorizations": {
+
+                    }
+                }
+            ]
+        },
+        {
+            "path": "/listAll",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "List All Protected Applications",
+                    "nickname": "listAll",
+                    "type": "array",
+                    "items": {
+                        "$ref": "ProtectionItem"
+                    },
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successfull Listed."
+                        },
+                        {
+                            "code": 404,
+                            "message": "Item not found."
+                        },
+                        {
+                            "code": 405,
+                            "message": "Invalid Input."
+                        }
+                    ],
+                    "notes": "Returns All Protected Applications.",
+                    "produces": [
+                        "application/json"
+                    ],
+                    "authorizations": {
+
+                    }
+                }
+            ]
+        },
+        {
+            "path": "/remove/{id}",
+            "operations": [
+                {
+                    "method": "DELETE",
+                    "summary": "Remove Protected Application by ID",
+                    "nickname": "remove",
+                    "type": "void",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "ID of Protected Application."
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successfull Removed."
+                        },
+                        {
+                            "code": 400,
+                            "message": "Invalid ID supplied."
+                        },
+                        {
+                            "code": 404,
+                            "message": "Item not found."
+                        },
+                        {
+                            "code": 405,
+                            "message": "Invalid Input."
+                        }
+                    ],
+                    "notes": "",
+                    "authorizations": {
+
+                    }
+                }
+            ]
+        },
+        {
+            "path": "/update",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Update Protected Application by ID",
+                    "nickname": "update",
+                    "type": "void",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "ID of Protected Application."
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "type": "string",
+                            "required": false,
+                            "description": "Application Name."
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "enabled",
+                            "type": "boolean",
+                            "required": true,
+                            "description": "Is this Application Enabled?"
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Successfull Updated."
+                        },
+                        {
+                            "code": 400,
+                            "message": "Invalid ID supplied."
+                        },
+                        {
+                            "code": 404,
+                            "message": "Item not found."
+                        },
+                        {
+                            "code": 405,
+                            "message": "Invalid Input."
+                        }
+                    ],
+                    "notes": "",
+                    "authorizations": {
+
+                    }
+                }
+            ]
+        }
+    ],
+    "models": {
+        "ProtectionItem": {
+            "id": "ProtectionItem",
+            "properties": {
+                "name": {
+                    "description": "Application Name",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Unique ID for Application",
+                    "type": "string"
+                },
+                "isEnabled": {
+                    "description": "Is Applications Enabled",
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "produces": [
+        "application/json"
+    ]
+}

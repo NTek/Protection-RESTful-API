@@ -1,0 +1,10 @@
+{
+    "apiVersion": null,
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/protection.{format}",
+            "description": "Manage Protections for Demo Applications"
+        }
+    ]
+}
